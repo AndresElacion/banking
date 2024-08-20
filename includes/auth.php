@@ -48,6 +48,7 @@
     function logoutUser() {
         session_unset();
         session_destroy();
+        header("Location: login.php");
     }
 
     function getAccountBalance($user_id) {
