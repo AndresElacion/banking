@@ -49,7 +49,7 @@
                 </div>
             <?php endif; ?>
             <div class="mb-5">
-                <strong>Current Balance:</strong> $
+                <strong>Current Balance: $<?php echo htmlspecialchars(number_format($balance, 2)); ?></strong>
             </div>
             <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
                 <div class="mb-4">
