@@ -15,9 +15,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"  rel="stylesheet" />
     <title>BANKING | DASHBOARD</title>
 </head>
 <body class="bg-gray-100">
+    <?php 
+        include('../components/nav.php');
+    ?>
     <div class="container mx-auto my-10 p-5">
         <h1 class="text-2xl font-bold mb-5">Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?></h1>
         <div class="bg-white p-5 rounded shadow">
@@ -27,5 +31,7 @@
             <a href="transaction.php" class="bg-blue-500 text-white p-2 rounded mt-5 inline-block">Make a Transaction</a>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 </html>
