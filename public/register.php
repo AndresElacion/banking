@@ -27,7 +27,7 @@
         <div class="container mx-auto my-10 p-5">
             <h1 class="w-full max-w-sm mx-auto text-center text-2xl font-bold p-3 bg-amber-400 rounded-md">Register</h1>
             <hr class="max-w-sm mx-auto" />
-            <form action="" method="POST" class="w-full max-w-sm mx-auto bg-white p-8 rounded-md shadow-xl">
+            <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="w-full max-w-sm mx-auto bg-white p-8 rounded-md shadow-xl">
                 <div class="mb-4">
                     <label class="block text-gray-700">Name</label>
                     <input type="text" name="name" class="w-full p-2 border border-gray-300 rounded mt-1" required>
