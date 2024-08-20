@@ -7,7 +7,7 @@
         $password = htmlspecialchars(trim($_POST['password']));
 
         if (registerUser($name, $email, $password)) {
-            header("Location: index.php");
+            header("Location: dashboard.php");
         } else {
             echo "Error: Could not register user.";
         }
