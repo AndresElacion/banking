@@ -225,4 +225,51 @@
     function generateCVV() {
         return rand(300, 999);
     }
+
+    function transferAmount($fromAccountNumber, $toAccountNumber, $amount) {
+        if ($amount <= 0) {
+            return false;
+        }
+
+        $db = new DB();
+        $conn = $db->connect();
+
+        $conn->beginTransaction();
+
+        try {
+            // deduct from the sender`s account
+            $deduct_query = "UPDATE accounts SET balance = balance - :amount WHERE account_number = :from_account AND balance >= :amount";
+            $deduct_stmt = $conn->prepare($deduct_query);
+            $deduct_stmt->bindParam(':amount', $amount);
+            $deduct_stmt->bindParam(':from_account', $fromAccountNumber);
+            $deduct_stmt->execute();
+
+            if ($deduct_stmt->rowCount() === 0) {
+                throw new Exception("Insufficient funds or account not found.");
+            }
+
+            // add to the receiver`s account
+            $add_query = "UPDATE accounts SET balance = balance + :amount WHERE account_number = :to_account";
+            $add_stmt = $conn->prepare($add_query);
+            $add_stmt->bindParam(':amount', $amount);
+            $add_stmt->bindParam(':to_account', $toAccountNumber);
+            $add_stmt->execute();
+
+            // log the transaction
+            $logTransactionQuery = "INSER INTO transactions (account_id, type, amount) 
+                                    VALUES ((SELECT account_id FROM accounts WHERE account_number = :from_account), 'transfer_out', :amount),
+                                            ((SELECT account_id FROM accounts WHERE account_number = :to_account), 'transfer_in', :amount)";
+            $logTransactionQuery_stmt = $conn->prepare($logTransactionQuery);
+            $logTransactionQuery_stmt->bindParam(':from_account', $fromAccountNumber);
+            $logTransactionQuery_stmt->bindParam(':to_account', $toAccountNumber);
+            $logTransactionQuery_stmt->bindParam(':amount', $amount);
+            $logTransactionQuery_stmt->execute();
+
+            $conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $conn->rollback();
+            return false;
+        }
+    }
 ?>
