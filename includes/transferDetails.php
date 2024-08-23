@@ -1,5 +1,6 @@
 <?php
     require_once '../includes/auth.php';
+    require_once '../includes/getAccountDetails.php';
 
     $accountDetails = getAccountDetails($_SESSION['user_id']);
 
