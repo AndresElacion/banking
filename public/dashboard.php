@@ -43,9 +43,10 @@
                 </div>
 
                 <!-- Transfer Section -->
-                <div class="bg-white p-5 rounded-lg shadow mt-10 lg:order-1">
+                <div class="flex flex-row bg-white p-5 rounded-lg shadow mt-10 lg:order-1">
                     <?php
                         include('../components/transfer.php');
+                        include('../components/payBills.php');
                     ?>
                 </div>
             </div>
