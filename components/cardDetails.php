@@ -1,4 +1,4 @@
-<div class="relative bg-gradient-to-r from-red-800 via-red-600 to-red-500 rounded-2xl shadow-2xl p-6 w-full h-56">
+<div class="relative bg-gradient-to-r from-red-800 via-red-600 to-red-500 rounded-xl shadow-2xl p-6 w-96 h-56">
     <!-- Card Chip -->
     <div class="absolute top-4 left-6 w-12 h-8 bg-yellow-400 rounded-sm"></div>
     
