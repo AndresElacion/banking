@@ -1,6 +1,7 @@
 <?php
     require_once '../includes/auth.php';
     require_once '../includes/transferDetails.php';
+    require_once '../includes/transaction.php';
 
     if (!isLoggedIn()) {
         header('Location: login.php');
@@ -32,12 +33,14 @@
 
             <!-- Main Content -->
             <div class="flex-grow pr-72">
-                <!-- Make transanction section -->
-                <div class="flex flex-col lg:flex-row justify-between p-4 lg:order-2">
-                    <?php include('../components/makeTransaction.php'); ?>
+                <!-- Total balance -->
+                <div class="flex flex-row justify-between lg:order-2">
+                    <div>
+                        <?php include('../components/totalBalance.php'); ?>
+                    </div>
 
                     <!-- Card Details section -->
-                    <div class="text-white p-4 max-w-lg">
+                    <div class="text-white pt-5 max-w-lg">
                         <?php include('../components/cardDetails.php'); ?>
                     </div>
                 </div>
@@ -47,6 +50,9 @@
                     <?php
                         include('../components/transfer.php');
                         include('../components/payBills.php');
+                        include('../components/buyLoad.php');
+                        include('../components/deposit.php');
+                        include('../components/withdraw.php');
                     ?>
                 </div>
             </div>
