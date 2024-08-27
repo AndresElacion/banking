@@ -1,5 +1,7 @@
 <?php
     require_once '../includes/auth.php';
+    require_once '../includes/deposit.php';
+    require_once '../includes/withdraw.php';
 
     if (!isLoggedIn()) {
         header("Location: login.php");
