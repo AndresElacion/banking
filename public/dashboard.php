@@ -2,6 +2,7 @@
     require_once '../includes/auth.php';
     require_once '../includes/transferDetails.php';
     require_once '../includes/transaction.php';
+    require_once '../includes/deposit.php';
 
     if (!isLoggedIn()) {
         header('Location: login.php');

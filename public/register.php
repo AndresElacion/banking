@@ -1,5 +1,6 @@
 <?php
-    require_once '../includes/auth.php';;
+    require_once '../includes/auth.php';
+    require_once '../includes/register.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = htmlspecialchars(trim($_POST['name']));
