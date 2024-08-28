@@ -2,8 +2,6 @@
     session_start();
     require_once 'db.php';
 
-    
-
     function loginUser($email, $password) {
         $db = new DB();
         $conn = $db->connect();
