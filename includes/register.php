@@ -1,5 +1,5 @@
 <?php
-    function registerUser($name, $email, $password) {
+    function registerUser($name, $email, $password, $address, $gender, $contact_number, $dob, $role) {
         $db = new DB();
         $conn = $db->connect();
     
@@ -9,10 +9,15 @@
     
         try {
             // Insert the new user
-            $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+            $query = "INSERT INTO users (name, email, password, address, gender, contact_number, dob, role) VALUES (:name, :email, :password, :address, :gender, :contact_number, :dob, :role)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':address', $address);
+            $stmt->bindParam(':gender', $gender);
+            $stmt->bindParam(':contact_number', $contact_number);
+            $stmt->bindParam(':dob', $dob);
+            $stmt->bindParam(':role', $role);
             $stmt->bindParam(':password', $hashedPassword);
     
             if ($stmt->execute()) {
@@ -34,11 +39,13 @@
                 $account_stmt->execute();
     
                 $conn->commit();
+                
                 return true;
             } else {
                 $conn->rollback();
                 return false;
             }
+            header("Location: dashboard.php");
         } catch (Exception $e) {
             $conn->rollback();
             return false;
