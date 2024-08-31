@@ -42,7 +42,13 @@
 
                     <!-- Card Details section -->
                     <div class="text-white pt-5 max-w-lg">
-                        <?php include('../components/cardDetails.php'); ?>
+                        <?php
+                            if ($_SESSION['user_role'] === 'admin') {
+                                include('../components/adminCardDetails.php');
+                            } else {
+                                include('../components/cardDetails.php');
+                            }
+                        ?>
                     </div>
                 </div>
 

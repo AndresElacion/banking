@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <!-- Hidden password field -->
-                <input type="hidden" name="password">
+                <input type="hidden" name="password" value="password01!">
             
                 <button class="bg-blue-500 p-2 text-white rounded-sm hover:bg-blue-600" type="submit">Submit</button>
             </form>

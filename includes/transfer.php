@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $transfer_success = transferAmount($fromAccountNumber, $toAccountNumber, $amount);
 
             if ($transfer_success) {
-                echo "Transfer successful!";
+                header("Location: ../public/success.php");
+                exit;
             } else {
                 echo "Transfer failed!";
             }
