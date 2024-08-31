@@ -9,7 +9,7 @@ if (!isLoggedIn()) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sender_id = $_SESSION['user_id'];
-    $receiver_account_number = $_POST['receiver_account_number'];
+    $receiver_account_number = str_replace(' ', '', htmlspecialchars(trim($_POST['receiver_account_number'])));
     $amount = $_POST['amount'];
 
     $db = new DB();
